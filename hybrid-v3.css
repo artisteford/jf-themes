@@ -1,0 +1,551 @@
+/*
+================================================================================
+|                                                                              |
+|                    CUSTOM JELLYFIN THEME - HYBRID                           |
+|                    Ultrachromatic Base + Jellyfish Elements                  |
+|                                                                              |
+================================================================================
+*/
+
+/* ~~~~~~~~~~~~~~~~~~~~ BASE ULTRACHROMATIC IMPORTS ~~~~~~~~~~~~~~~~~~~~ */
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/progress/floating.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/dark_withaccent.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_floating.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fields/fields_noborder.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_minimalistic.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/base.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/accentlist.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fixes.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/header/header_transparent.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/hoverglow.css');
+@import url('https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_banner-logo.css');
+
+/* ~~~~~~~~~~~~~~~~~~~~ EXTERNAL IMPORTS FROM JELLYFISH ~~~~~~~~~~~~~~~~~~~~ */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/Druidblack/jellyfin-icon-metadata/public-icon.css");
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/fonts/materialSymbolsRounded.css");
+
+/* ~~~~~~~~~~~~~~~~~~~~ CUSTOM THEME VARIABLES ~~~~~~~~~~~~~~~~~~~~ */
+:root {
+    /* Peach accent color */
+    --accent: 255, 218, 185;
+    --peach-primary: rgba(255, 218, 185, 1.0);
+    --peach-secondary: rgba(255, 218, 185, 0.6);
+    --peach-transparent: rgba(255, 218, 185, 0.1);
+    --peach-bg-transparent: rgba(255, 218, 185, 0.2);
+    
+    /* Header styling */
+    --header-background-color: #ffffff6e;
+    
+    /* Rounding */
+    --rounding: 12px;
+    --rounded-cards: 15px;
+    --blur: 15px;
+    
+    /* Background colors */
+    --primary-background-color: #000000;
+    --secondary-background-color: #181818;
+    --tertiary-background-color: #252525;
+    --alt-accent-color: #ffffff20;
+    --text-color: #000000;
+    /* Lighter background colors for better contrast */
+    --secondary-background-transparent: rgba(20, 20, 20, 0.35);
+    --primary-background-transparent: rgba(10, 10, 10, 0.2);
+    --section-background: rgba(50, 50, 50, 0.5);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ GLOBAL FONT FROM JELLYFISH ~~~~~~~~~~~~~~~~~~~~ */
+body, h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ MODERN PLAY BUTTON & SYMBOLS FROM JELLYFISH ~~~~~~~~~~~~~~~~~~~~ */
+.material-icons.fast_rewind::before { content: "\e059"; }  /* Changes to 'skip_previous' icon */
+.material-icons.fast_forward::before { content: "\e057"; } /* Changes to 'skip_next' icon */
+
+/* Modern Play Button Styling - No text */
+.layout-desktop .mainDetailButtons .btnPlay,
+.layout-tv .mainDetailButtons .btnPlay {
+    background: var(--peach-primary) !important;
+    margin-right: 0 !important;
+    right: 0 !important;
+    color: var(--text-color) !important;
+    border-radius: var(--rounded-cards) !important;
+}
+
+/* Mobile play button - smaller size */
+.layout-mobile .mainDetailButtons .btnPlay {
+    background: var(--peach-primary) !important;
+    color: var(--text-color) !important;
+    border-radius: var(--rounded-cards) !important;
+    transform: scale(0.7) !important;
+}
+
+/* Scale down all mobile detail buttons */
+.layout-mobile .mainDetailButtons .detailButton {
+    transform: scale(0.7) !important;
+}
+
+.layout-desktop .mainDetailButtons .btnPlay:hover,
+.layout-mobile .mainDetailButtons .btnPlay:hover {
+    filter: brightness(120%);
+    box-shadow: 0px 0px 15px 2px rgba(255, 255, 255, .5) !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ JELLYFISH HEADER STYLING & Z-INDEX FIX ~~~~~~~~~~~~~~~~~~~~ */
+/* Override Ultrachromatic header transparency to allow content behind */
+.skinHeader {
+    background-color: transparent !important;
+    z-index: 1000 !important;
+}
+
+/* Add top padding to homepage content so it doesn't start behind header */
+#indexPage,
+#moviesPage,
+#tvRecommendedPage,
+#musicRecommendedPage {
+    margin-top: 0px !important;
+    padding-top: 80px !important; /* Space for header pills */
+}
+
+/* Mobile homepage padding adjustment */
+.layout-mobile #indexPage,
+.layout-mobile #moviesPage,
+.layout-mobile #tvRecommendedPage,
+.layout-mobile #musicRecommendedPage {
+    padding-top: 70px !important;
+}
+
+/* Frosted glass pill-shaped header */
+.headerTabs,
+.headerRight {
+    background: var(--header-background-color) !important;
+    border-radius: 100px !important;
+    color: var(--secondary-background-color) !important;
+    backdrop-filter: blur(50px) !important;
+    box-shadow: 1px 3px 6px rgba(var(--secondary-background-color), .5);
+    z-index: 1001 !important; /* Ensure pills are above content but content shows through header */
+}
+
+.headerRight .paper-icon-button-light:hover,
+.headerRight .paper-icon-button-light:hover:not(:disabled),
+.headerRight .paper-icon-button-light:focus,
+.headerRight .paper-icon-button-light:focus:not(:disabled) {
+    color: var(--peach-primary) !important;
+}
+
+.homeLibraryText,
+.emby-button-foreground {
+    color: var(--secondary-background-color) !important;
+    transition: color 0.2s ease;
+    top: unset !important;
+    position: relative;
+}
+
+/* Header tab button styling */
+#indexPage .homeLibraryButton,
+.emby-tab-button {
+    background: transparent !important;
+    min-width: 0 !important;
+    max-width: 50vw !important;
+    width: fit-content !important;
+    transition: background-color 0.2s ease;
+}
+
+.layout-desktop .homeLibraryButton,
+.layout-desktop .emby-tab-button {
+    margin: .5em !important;
+}
+
+/* Hover effects */
+.raised:hover .homeLibraryText,
+.emby-tab-button:hover .emby-button-foreground {
+    color: var(--text-color) !important;
+    transition: color 0.2s ease;
+}
+
+#indexPage .homeLibraryButton:hover,
+.emby-tab-button:hover {
+    border-radius: 100px !important;
+    background-color: var(--peach-primary) !important;
+}
+
+/* Active tab styling */
+.emby-tab-button-active {
+    background-color: var(--peach-primary) !important;
+    border-radius: 100px !important;
+    color: var(--text-color) !important;
+}
+
+.emby-tab-button-active > .emby-button-foreground {
+    color: var(--text-color) !important;
+}
+
+/* Desktop header positioning */
+.layout-tv .headerTabs, .layout-desktop .headerTabs {
+    margin-bottom: 10px !important;
+    margin-left: 60px !important;
+    margin-top: -58px !important;
+    font-size: 12px !important;
+}
+
+.layout-tv .headerRight, .layout-desktop .headerRight {
+    height: 45px !important;
+    padding: 0px 5px !important;
+    position: absolute !important;
+    right: 12px !important;
+}
+
+.emby-tab-button {
+    height: 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 15px !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ MOBILE HEADER FROM JELLYFISH ~~~~~~~~~~~~~~~~~~~~ */
+.layout-mobile .skinHeader {
+    transition: .5s !important;
+}
+
+.layout-mobile .headroom--unpinned {
+    transform: none;
+}
+
+.layout-mobile .headroom--unpinned:has(.headerTabs.sectionTabs:not(.hide)) {
+    transform: translateY(-50%);
+}
+
+/* Scrolled state - blurred background */
+.layout-mobile .headroom--not-top {
+    background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+/* Top state - transparent */
+.layout-mobile .headroom--top,
+.layout-mobile .headroom--not-top:has(.headerTabs.sectionTabs:not(.hide)) {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
+/* Right header section when at top */
+.layout-mobile .headroom--top .headerRight {
+    background: var(--header-background-color) !important;
+    border-radius: 100px !important;
+    backdrop-filter: blur(50px) !important;
+    box-shadow: 1px 3px 6px rgba(var(--secondary-background-color), .5);
+    color: var(--secondary-background-color) !important;
+    height: 40px !important;
+    padding: 0 10px !important;
+}
+
+/* Mobile header tabs */
+.layout-mobile .headerTabs {
+    background-color: rgba(207, 221, 233, 0.35) !important;
+    border-radius: 100px !important;
+    height: 40px !important;
+    font-size: 12px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    backdrop-filter: blur(50px) !important;
+    box-shadow: 1px 3px 6px rgba(var(--secondary-background-color), .5);
+    color: var(--secondary-background-color) !important;
+}
+
+.layout-mobile .emby-tab-button {
+    height: 40px !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ PEACH PROGRESS BARS ~~~~~~~~~~~~~~~~~~~~ */
+/* Override Ultrachromatic progress bars with peach color */
+#indexPage .itemProgressBarForeground,
+.libraryPage .itemProgressBarForeground,
+#itemDetailPage .itemProgressBarForeground {
+    background-color: var(--peach-primary) !important;
+}
+
+#indexPage .itemProgressBar,
+.libraryPage .itemProgressBar,
+#itemDetailPage .itemProgressBar {
+    background: var(--peach-bg-transparent) !important;
+}
+
+progress::-webkit-progress-value,
+.itemProgressBarForeground,
+.mdl-slider-background-lower {
+    background: var(--peach-primary) !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ DETAIL SECTIONS FROM JELLYFISH ~~~~~~~~~~~~~~~~~~~~ */
+/* Card-style sections for detail pages with lighter background */
+.layout-desktop .detailSectionContent {
+    background: var(--section-background) !important;
+    border-radius: var(--rounded-cards) !important;
+    /* padding: 40px 20px 0px 20px !important; */
+    padding: 20px !important; /* even padding */
+    margin-top: 40px !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+.layout-mobile .detailSectionContent {
+    background: var(--section-background) !important;
+    border-radius: var(--rounded-cards) !important;
+    padding: 10px 20px !important;
+    margin-top: 20px !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+.layout-tv .detailSectionContent {
+    background: var(--section-background) !important;
+    border-radius: var(--rounded-cards) !important;
+    padding: 10px 20px 10px 20px !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+/* Fix desktop item detail spacing and padding */
+.layout-desktop .itemDetailsGroup {
+    padding: 20px !important; /* Consistent padding for all sides */
+    margin-top: 20px !important; /* Add space between sections */
+    background: var(--section-background) !important;
+    border-radius: var(--rounded-cards) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+/* Track selections styling */
+.trackSelections {
+    background: var(--section-background) !important;
+    border-radius: var(--rounded-cards) !important;
+    padding: 10px 20px !important;
+    margin-top: 20px !important;
+    max-width: 100% !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+/* Fix mobile item detail spacing */
+.layout-mobile .itemDetailsGroup:has(.detailsGroupItem:not(.hide)) {
+    padding: 10px 20px 1px !important;
+    margin-top: 20px !important;
+}
+
+/* Hide sections that are empty */
+.detailSectionContent:empty,
+.itemDetailsGroup:empty,
+.trackSelections:empty {
+    display: none !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ MOBILE BACKDROP & LOGO FROM JELLYFISH ~~~~~~~~~~~~~~~~~~~~ */
+/* Large backdrop with fade effect on mobile */
+.layout-mobile .itemBackdrop {
+    margin: 0 !important;
+    opacity: .5 !important;
+    height: 50vh !important;
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%);
+}
+
+/* Mobile logo positioning - try flexbox centering approach */
+.layout-mobile .detailPageWrapperContainer {
+    padding-top: 1em !important;
+    position: relative !important;
+}
+
+.layout-mobile .detailLogo {
+    display: flex !important;
+    position: absolute !important;
+    width: 70% !important;
+    max-height: 15vh !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 20vh !important;
+    margin: 0 auto !important;
+    z-index: 3 !important;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.7)) !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Alternative approach - using text-align if flexbox doesn't work */
+.layout-mobile .detailPageWrapperContainer .detailLogo {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Bigger logo in landscape - keep centered */
+@media (orientation: landscape) {
+    .layout-mobile .detailLogo {
+        width: 50% !important;
+        top: 15vh !important;
+    }
+}
+
+/* Center main detail buttons on mobile */
+.layout-mobile .mainDetailButtons {
+    justify-content: center;
+    padding-top: 10px !important;
+}
+
+.layout-mobile .detailPageContent {
+    padding-right: 0 !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ ACCENT COLOR OVERRIDES ~~~~~~~~~~~~~~~~~~~~ */
+/* Apply peach accent throughout */
+.emby-checkbox:checked+span+.checkboxOutline,
+.selectionCommandsPanel,
+.MuiButton-root.MuiButton-containedSizeMedium,
+.MuiChip-root.MuiChip-colorInfo:not(.MuiChip-root.MuiChip-colorError),
+.button-submit,
+.layout-desktop .dashboardDocument div[data-role="controlgroup"] a.ui-btn-active,
+.layout-desktop #editItemMetadataPage .btnHeaderSave,
+.playbackProgress>div,
+.iconOsdProgressInner {
+    background: var(--peach-primary) !important;
+}
+
+/* Redo styling for count indicator badge */
+.countIndicator {
+    background: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent black background */
+    color: #ffffff !important; /* White text */
+    border-radius: 50% !important;
+}
+
+.MuiAlert-root.MuiAlert-standardInfo,
+.navMenuOption-selected,
+.MuiListItemButton-root.Mui-selected,
+.jstree-default .jstree-wholerow-clicked {
+    background: var(--peach-secondary) !important;
+}
+
+/* Text and icon colors */
+.button-link:not(.itemDetailPage .button-link),
+.selectLabelFocused,
+.textareaLabelFocused,
+.inputLabelFocused,
+.metadataSidebarIcon,
+.upNextDialog-countdownText,
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeInherit,
+.listItemImageButton:hover,
+.button-flat:hover,
+#divRunningTasks span,
+.username,
+.headerUsername,
+.sectionTitle,
+.navMenuOption:hover:not(.navMenuOption-selected) {
+    color: var(--peach-primary) !important;
+}
+
+/* Border colors */
+.emby-checkbox:checked+span+.checkboxOutline,
+.emby-checkbox:focus:not(:checked)+span+.checkboxOutline,
+.emby-input:focus,
+.emby-textarea:focus,
+.emby-select-withcolor:focus,
+.mdl-spinner__layer-1,
+.mdl-spinner__layer-2,
+.mdl-spinner__layer-3,
+.mdl-spinner__layer-4,
+.progressring-spiner {
+    border-color: var(--peach-primary) !important;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ FINAL OVERRIDES ~~~~~~~~~~~~~~~~~~~~ */
+/* Remove content hiding behavior from Ultrachromatic */
+.force-scroll {
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+}
+
+/* Override any Ultrachromatic rules that hide content behind header */
+.backgroundContainer:not(.withBackdrop):not(.backgroundContainer-transparent) {
+    background-color: var(--secondary-background-transparent) !important;
+    z-index: 0 !important; /* Keep content below header pills but visible */
+}
+
+/* Backdrop brightness adjustment */
+.backdropImage {
+    filter: brightness(30%) blur(12px);
+}
+
+/* Dashboard section headings */
+.dashboardSection h3 {
+    color: var(--peach-primary);
+    font-weight: bold !important;
+}
+
+/* Hide chevrons */
+.dashboardSection span.material-icons.chevron_right {
+    display: none;
+}
+
+
+
+
+/* === Dashboard Now Playing progress fix === */
+
+/* Reset the full-length background bar */
+.itemProgressBar.backgroundProgress .itemProgressBarForeground {
+    background: rgba(255, 255, 255, 0.15) !important;  /* faint track */
+}
+
+/* Reset transcoding bar (optional) */
+.itemProgressBar.transcodingProgress .itemProgressBarForeground {
+    background: rgba(200, 200, 200, 0.4) !important;  /* subtle gray */
+}
+
+/* Actual playback progress bar */
+.itemProgressBar.playbackProgress .itemProgressBarForeground {
+    background: var(--peach-primary) !important;  /* bright peach */
+}
+
+
+
+/* Sidebar selected item text color override */
+.MuiListItemButton-root.Mui-selected,
+.MuiListItemButton-root.Mui-selected .MuiTypography-root {
+    color: #fff !important;        /* keep text white */
+    fill: #fff !important;         /* make sure icons are white too */
+}
+
+/* Optional: hover effect on selected */
+.MuiListItemButton-root.Mui-selected:hover,
+.MuiListItemButton-root.Mui-selected:hover .MuiTypography-root {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+
+
+
+/* Peach buttons: use black text instead of white */
+.button-submit,
+.emby-button.raised,
+.emby-button.button-submit {
+    background: var(--peach-primary) !important;
+    color: #000 !important;  /* black text for readability */
+}
+
+/* Also style the span inside */
+.button-submit span,
+.emby-button.raised span {
+    color: #000 !important;
+}
+
+
+
+
+/* Checkbox outline when checked */
+.emby-checkbox:checked + span + .checkboxOutline {
+    background: var(--peach-primary) !important;
+    border-color: var(--peach-primary) !important;
+}
+
+/* The check icon itself */
+.checkboxIcon-checked {
+    color: #000 !important;  /* black checkmark */
+}
