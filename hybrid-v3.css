@@ -197,7 +197,7 @@ body, h1, h2, h3, h4, h5, h6, p {
     display: inline-flex !important;   /* shrink to fit */
     width: auto !important;            /* don't stretch full width */
     max-width: 90vw !important;        /* prevent it from getting too wide */
-    margin: -58px auto 10px auto !important; /* center horizontally */
+    margin: 20px auto 10px auto !important; /* center horizontally */
     font-size: 12px !important;
 }
 
@@ -564,4 +564,10 @@ progress::-webkit-progress-value,
 /* The check icon itself */
 .checkboxIcon-checked {
     color: #000 !important;  /* black checkmark */
+}
+
+
+/* Push down active page tab content on mobile so it's not obscured by header pills */
+.layout-mobile .pageTabContent.is-active:not(#homeTab) {
+    padding-top: 50px !important;  /* adjust px until clear */
 }
