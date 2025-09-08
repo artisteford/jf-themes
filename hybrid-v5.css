@@ -643,3 +643,12 @@ progress::-webkit-progress-value,
 	padding-bottom: 1em;
 }
 */
+
+@media {
+  #indexPage,
+  #moviesPage,
+  #tvRecommendedPage,
+  #musicRecommendedPage {
+    overflow-y: visible;
+  }
+}
