@@ -1,0 +1,18 @@
+/*
+@import url("https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/complete.css");
+@import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/finimalism7.css");
+@import url('https://cdn.jsdelivr.net/gh/MakD/zombie-release@latest/zombie-min-git.css');
+
+@import url('https://cdn.jsdelivr.net/gh/stpnwf/ZestyTheme@latest/theme.css');
+@import url('https://cdn.jsdelivr.net/gh/stpnwf/ZestyTheme@latest/colorschemes/coral.css');
+
+@import url(https://cdn.jsdelivr.net/gh/MakD/zombie-release@latest/zombie_revived.css);
+
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/progress_bar.css");
+@import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/colors/peach.css");
+.backdropImage {filter: blur(12px)}
+
+@import url('https://cdn.jsdelivr.net/gh/J0nan/ZestyTheme@main/theme.css');
+@import url('https://cdn.jsdelivr.net/gh/J0nan/ZestyTheme@main/colorschemes/coral.css');
+*/
