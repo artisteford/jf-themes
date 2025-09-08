@@ -654,3 +654,8 @@ progress::-webkit-progress-value,
   }
 }
 
+
+.dialog {
+    background: var(--header-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
