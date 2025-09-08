@@ -290,6 +290,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 .mainDrawer {
+    background: var(--secondary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
 
@@ -652,3 +653,4 @@ progress::-webkit-progress-value,
     overflow-y: visible;
   }
 }
+
