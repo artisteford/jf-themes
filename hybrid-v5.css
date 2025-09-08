@@ -270,11 +270,32 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 /* Top state - transparent */
-.layout-mobile .headroom--top,
-.layout-mobile .headroom--not-top:has(.headerTabs.sectionTabs:not(.hide)) {
+/*.layout-mobile .headroom--top,
+.layout-mobile .headroom--not-top:has(.headerTabs.sectionTabs:not(.hide)) {*/
+.layout-mobile .headroom--top {
     background: transparent !important;
     backdrop-filter: none !important;
+	background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
 }
+
+
+
+
+
+/* Scrolled state - blurred background */
+.layout-desktop .skinHeader {
+    background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+.mainDrawer {
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+
+
+
 
 /* Right header section when at top */
 .layout-mobile .headroom--top .headerRight {
@@ -597,13 +618,13 @@ progress::-webkit-progress-value,
 
 
 /* Push down active page tab content on mobile so it's not obscured by header pills */
-.layout-mobile .pageTabContent.is-active:not(#homeTab) {
-    padding-top: 30px !important;  /* adjust px until clear */
+.layout-mobile .pageTabContent.is-active {
+    padding-top: 3em !important;  /* adjust px until clear */
 }
 
 /* Push down active page tab content on mobile so it's not obscured by header pills */
-.layout-desktop .pageTabContent.is-active:not(#homeTab) {
-    padding-top: 30px !important;  /* adjust px until clear */
+.layout-desktop .pageTabContent.is-active {
+    padding-top: 3em !important;  /* adjust px until clear */
 }
 
 .layout-desktop .detailRibbon {
@@ -613,4 +634,12 @@ progress::-webkit-progress-value,
 
 }
 
+.sectionTabs {
+	margin-bottom: .55em;
+}
 
+/*
+.skinHeader {
+	padding-bottom: 1em;
+}
+*/
