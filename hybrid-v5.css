@@ -284,7 +284,7 @@ body, h1, h2, h3, h4, h5, h6, p {
     box-shadow: 1px 3px 6px rgba(var(--secondary-background-color), .5);
     color: var(--secondary-background-color) !important;
     height: 40px !important;
-    padding: 0 10px !important;
+    /*padding: 0 10px !important;*/
 }
 
 /* Mobile header tabs */
@@ -612,4 +612,5 @@ progress::-webkit-progress-value,
     padding-bottom: 1.5em;
 
 }
+
 
