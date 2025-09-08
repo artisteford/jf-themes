@@ -183,11 +183,27 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 /* Desktop header positioning */
+/*
 .layout-tv .headerTabs, .layout-desktop .headerTabs {
     margin-bottom: 10px !important;
     margin-left: 60px !important;
     margin-top: -58px !important;
     font-size: 12px !important;
+}
+*/
+
+.layout-tv .headerTabs,
+.layout-desktop .headerTabs {
+    display: inline-flex !important;   /* shrink to fit */
+    width: auto !important;            /* don't stretch full width */
+    max-width: 90vw !important;        /* prevent it from getting too wide */
+    margin: -58px auto 10px auto !important; /* center horizontally */
+    font-size: 12px !important;
+}
+
+.layout-desktop .headerTabs .emby-tabs-slider {
+    overflow-x: auto !important;
+    scrollbar-width: thin;
 }
 
 .layout-tv .headerRight, .layout-desktop .headerRight {
