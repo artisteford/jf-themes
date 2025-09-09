@@ -259,9 +259,11 @@ body, h1, h2, h3, h4, h5, h6, p {
     transform: none;
 }
 
+/*
 .layout-mobile .headroom--unpinned:has(.headerTabs.sectionTabs:not(.hide)) {
     transform: translateY(-50%);
 }
+*/
 
 /* Scrolled state - blurred background */
 .layout-mobile .headroom--not-top {
@@ -275,19 +277,32 @@ body, h1, h2, h3, h4, h5, h6, p {
 .layout-mobile .headroom--top {
     background: transparent !important;
     backdrop-filter: none !important;
-	background: var(--secondary-background-transparent) !important;
-    backdrop-filter: blur(var(--blur)) !important;
+	/*background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;*/
 }
 
-
-
-
-
-/* Scrolled state - blurred background */
+/*
 .layout-desktop .skinHeader {
     background: var(--secondary-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
+}*/
+/* Transparent when at very top (no scrolled content) */
+/* Default = top = transparent */
+.layout-desktop .skinHeader {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
+
+/* Scrolled */
+.layout-desktop .skinHeader.scrolled {
+    background: var(--secondary-background-transparent) !important;
+    backdrop-filter: blur(var(--blur)) !important;
+}
+
+
+
+
 
 .mainDrawer {
     background: var(--secondary-background-transparent) !important;
@@ -659,3 +674,4 @@ progress::-webkit-progress-value,
     background: var(--header-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
+
