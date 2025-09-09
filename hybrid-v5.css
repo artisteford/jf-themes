@@ -688,12 +688,12 @@ progress::-webkit-progress-value,
   }
 }
 
-
+/*
 .dialog {
     background: var(--header-background-transparent) !important;
     backdrop-filter: blur(var(--blur)) !important;
 }
-
+*/
 #itemDetailPage .detailLogo {
 	background-position: 50% 50%;
 }
@@ -756,4 +756,5 @@ progress::-webkit-progress-value,
 .layout-mobile .detailLogo {
     z-index: 3 !important;
 }
+
 
