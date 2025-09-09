@@ -694,4 +694,8 @@ progress::-webkit-progress-value,
     backdrop-filter: blur(var(--blur)) !important;
 }
 
+#itemDetailPage .detailLogo {
+	background-position: 50% 50%;
+}
+
 
