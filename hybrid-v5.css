@@ -757,4 +757,42 @@ progress::-webkit-progress-value,
     z-index: 3 !important;
 }
 
+.play-button {
+    border-radius: 15px !important;
+    background: var(--peach-primary) !important;
+    max-width: unset !important;
+}
+.play-button::before {
+    font-family: 'Material Symbols Rounded';
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    .plot-container {
+        display: unset;
+        top: calc(50% + 18.5vh);
+    }
+    .dots-container {
+        top: calc(15%);
+    }
+}
+.backdrop-container {
+    -webkit-mask-image: linear-gradient(
+    to top,
+    #fff0 10%,
+    #000000 40%
+  );
+}
+.force-scroll {
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
 
